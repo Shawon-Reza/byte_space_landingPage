@@ -1,5 +1,6 @@
 import { FaStar } from "react-icons/fa";
 import { MdSignalCellularAlt } from "react-icons/md";
+import { Link } from "react-router";
 import CourseAvatarGroup from "./CourseAvatarGroup";
 
 
@@ -72,13 +73,19 @@ function mergeCourse(course = {}) {
 /**
  * @param {{ course?: Course, className?: string }} props
  */
-export default function CourseCard({ course, className = "" }) {
+export default function CourseCard({ course, className = "", onClick }) {
   const { image, stats, title, instructor, rating, level, students, price } =
     mergeCourse(course);
 
   return (
     <article
       className={`w-full max-w-[360 rounded-2xl border border-neutral-200 bg-white p-3 ${className}`}
+      onClick={(event) => {
+        // Links inside the card have their own destination; don't trigger the
+        // card's course-details navigation when the creator name is clicked.
+        if (event.target.closest("a")) return;
+        onClick?.(event);
+      }}
     >
       {/* Cover + stat pills */}
       <div className="relative aspect-[7/4] w-full overflow-hidden rounded-lg bg-neutral-200 max-h-[60%]">
@@ -103,12 +110,13 @@ export default function CourseCard({ course, className = "" }) {
           </h3>
           <p className="mt-1 truncate text-[11px] text-neutral-500">
             by{" "}
-            <a
-              href={instructor.href}
+            <Link
+              to={instructor.href}
+              onClick={(event) => event.stopPropagation()}
               className="text-[#0A3CFF] hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A3CFF]/50"
             >
               {instructor.name}
-            </a>
+            </Link>
           </p>
         </div>
 

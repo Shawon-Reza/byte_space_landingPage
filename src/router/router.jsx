@@ -3,6 +3,7 @@ import Test from "../features/Test";
 import NotFoundPage from "../pages/notFoundPage/NotFoundPage";
 import CreatorProfilePage from './../pages/creatorProfile/CreatorProfilePage';
 import SearchPage from "../pages/searchPage/SearchPage";
+import CourseDetails from './../pages/courseDetails/CourseDetails';
 
 
 export const router = createBrowserRouter([
@@ -12,11 +13,17 @@ export const router = createBrowserRouter([
   },
   {
     path: "/courses",
-    element: <SearchPage/>,
+    element: <SearchPage />,
   },
   {
-    path: "/creator_profile_test",
-    element: <CreatorProfilePage/>,
+    path: "/courses/:id",
+    element: <CourseDetails/>,
+  },
+
+
+  {
+    path: "/creators/:id",
+    element: <CreatorProfilePage />,
   },
 
 
@@ -24,6 +31,6 @@ export const router = createBrowserRouter([
 
   {
     path: "*",
-    element: <NotFoundPage/>,
+    element: <NotFoundPage />,
   }
 ]);
