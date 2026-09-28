@@ -1,0 +1,21 @@
+import React from 'react'
+import Footer from '../../components/layout/Footer'
+import Navbar from '../../components/layout/Navbar'
+import CreatorProfileHeader from './components/CreatorProfileHeader'
+import Courses from './components/Courses'
+
+const CreatorProfilePage = () => {
+    return (
+        <div>
+            <Navbar />
+            <CreatorProfileHeader />
+
+
+            <Courses />
+
+            <Footer />
+        </div>
+    )
+}
+
+export default CreatorProfilePage
