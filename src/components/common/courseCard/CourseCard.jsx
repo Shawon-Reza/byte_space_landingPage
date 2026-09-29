@@ -4,20 +4,6 @@ import { Link } from "react-router";
 import CourseAvatarGroup from "./CourseAvatarGroup";
 
 
-/**
- * Shape of the `course` prop (every field is optional).
- * Missing / undefined / null fields fall back to DEFAULT_COURSE.
- *
- * @typedef {Object} Course
- * @property {{ src: string, alt?: string }} [image]
- * @property {{ lessons: number, duration: string, comments: number }} [stats]
- * @property {string} [title]
- * @property {{ name: string, href?: string }} [instructor]
- * @property {number} [rating]                       e.g. 4.5
- * @property {string} [level]                        "Beginner" | "Intermediate" | "Advanced"
- * @property {{ avatars: {src: string, alt?: string, fallback?: string}[], extraCount: number }} [students]
- * @property {{ amount: number, currency: string, period: string }} [price]
- */
 
 export const DEFAULT_COURSE = {
   image: {
