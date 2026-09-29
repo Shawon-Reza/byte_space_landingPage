@@ -650,3 +650,15 @@ export const courses = [
     price: { amount: 19, currency: "$", period: "lifetime" },
   },
 ];
+
+// Extra local sample courses make creator filters and pagination testable
+// before creator-specific course data is connected to an API.
+export const creatorTestCourses = courses.slice(1, 10).map((course, index) => ({
+  ...course,
+  id: `purepearl-sample-${String(index + 2).padStart(3, "0")}`,
+  title: `${course.title} (Creator sample ${index + 2})`,
+  instructor: {
+    name: "purepearl studio",
+    href: "/creators/purepearl-studio",
+  },
+}));

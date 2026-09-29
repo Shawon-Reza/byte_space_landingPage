@@ -33,7 +33,7 @@ export function Footer() {
   return (
     <footer className="border-t border-[#dedede] bg-white text-[#252525]">
       <div className="mx-auto flex  flex-col px-6 md:px-10 lg:px-14 xl:px-21 2xl:px-21 py-8 md:py-12 lg:py-15">
-        <div className="grid gap-12 lg:grid-cols-[minmax(360px,1.45fr)_minmax(0,1.75fr)] lg:gap-16">
+        <div className="grid gap-6 lg:grid-cols-[minmax(360px,1.45fr)_minmax(0,1.75fr)] lg:gap-16">
           <div>
             <a href="#" className="inline-flex items-center gap-2" aria-label="ByteSpace home">
               <img src={footerImg} alt="logo" />
@@ -59,7 +59,7 @@ export function Footer() {
               </button>
             </form>
             
-            <p className="mt-5 max-w-[375px] text-[9px] md:text-sm leading-[1.5] text-[#555]">
+            <p className="mt-5 max-w-[375px] text-[9px] md:text-sm  text-[#555]">
               By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
             </p>
           </div>

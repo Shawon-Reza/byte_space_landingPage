@@ -57,7 +57,7 @@ export default function CourseDetailsAbout({ data, className = "" }) {
   const keyPoints = pick(data?.keyPoints, d.keyPoints);
 
   return (
-    <div className={`w-full max-w-4xl  px-6 md:px-10 lg:px-14 xl:px-21 2xl:px-21 pb-5 lg:pb-10  ${className}`}>
+    <div className={`w-full max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl  px-6 md:px-10 lg:px-14 xl:px-21 2xl:px-21 pb-5 lg:pb-10  ${className}`}>
       {/* Description */}
       <section className="">
         <h2 className="text-lg font-semibold text-neutral-950 sm:text-xl">

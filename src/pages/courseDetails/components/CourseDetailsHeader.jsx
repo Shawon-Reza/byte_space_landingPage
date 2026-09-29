@@ -4,6 +4,7 @@ import { FiCheck, FiShare2, FiUsers } from "react-icons/fi";
 import { MdSignalCellularAlt } from "react-icons/md";
 import { Link } from "react-router";
 import VideoPlayer from "../../../components/ui/Videoplayer";
+import CourseEnrollCard from "./CourseEnrollCard";
 
 
 export const DEFAULT_COURSE_HEADER = {
@@ -53,7 +54,7 @@ export default function CourseDetailsHeader({ course, onShare, className = "" })
 
   return (
     <header
-      className={`relative w-full bg-[#003BE2] isolate py-8 text-white  sm:py-10  px-6 md:px-10 lg:px-14 xl:px-21 2xl:px-21 ${className} h-[calc(100dvh-65px)] overflow-hidden`}
+      className={`relative w-full bg-[#003BE2] isolate py-8 text-white  sm:py-10  px-6 md:px-10 lg:px-14 xl:px-21 2xl:px-21 ${className}`}
     >
       {/* ----------- bg ----------- */}
       <div
@@ -100,17 +101,21 @@ export default function CourseDetailsHeader({ course, onShare, className = "" })
       </div>
 
       {/* ------------- Video part --------------*/}
-      <div className="w-full py-10">
-        <div className="w-[60%] max-h-[40%]">
+      <div className="flex w-full flex-col gap-8 py-10 md:flex-row md:items-start md:gap-6">
+        <div className="w-full min-w-0 md:w-[60%]">
           <VideoPlayer
             src="https://res.cloudinary.com/dbmdhxmtx/video/upload/v1790624043/4495983-uhd_3840_2160_25fps_shnasn.mp4"
             poster="https://res.cloudinary.com/dbmdhxmtx/image/upload/v1781442186/PXL_20260307_073300163.PORTRAIT_zynmss.jpg"
             title="Course preview"
             onPlay={() => console.log("started")}
-            className="h-[55dvh] shadow-lg"
+            className="h-[35dvh] min-h-56 w-full shadow-lg sm:h-[45dvh] md:h-[55dvh]"
           />
         </div>
-        <div className="w-[40%]">
+        <div className="relative w-full md:w-[40%]">
+
+          <div className="relative mx-auto w-full max-w-sm md:absolute md:top-0 md:right-0 xl:right-10">
+            <CourseEnrollCard/>
+          </div>
 
         </div>
 
@@ -129,3 +134,4 @@ function Pill({ icon, children }) {
     </li>
   );
 }
+
