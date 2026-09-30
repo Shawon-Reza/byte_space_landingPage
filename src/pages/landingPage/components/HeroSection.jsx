@@ -1,9 +1,14 @@
-import { useState } from "react";
-import { FiSearch, FiStar } from "react-icons/fi";
+import { useEffect, useRef, useState } from "react";
+import { FiPause, FiPlay, FiSearch, FiStar } from "react-icons/fi";
+import { AnimatePresence, motion } from "framer-motion";
 import heroBoy from "../../../assets/images/heroBoy.png";
 import rainbow from "../../../assets/images/heroRainbowBG.png"
 import CountUpModule from "react-countup";
 import Magnet from "../../../components/ui/Magnet";
+import TextType from "../../../components/ui/TextType";
+
+
+
 
 const CountUp = CountUpModule.default ?? CountUpModule;
 
@@ -30,9 +35,37 @@ export default function HeroSection({
     extraCount: 2000,
   },
   className = "",
+  iconsPaused = false,
+  onToggleIcons,
 }) {
   const [query, setQuery] = useState("");
+  const [showIconHint, setShowIconHint] = useState(false);
+  const iconControlRef = useRef(null);
   const percent = Math.min(Math.max(Number(progressCard.percent) || 0, 0), 100);
+
+  useEffect(() => {
+    const control = iconControlRef.current;
+    if (!control) return;
+
+    let wasVisible = false;
+    let hideTimer;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !wasVisible) {
+        wasVisible = true;
+        setShowIconHint(true);
+        window.clearTimeout(hideTimer);
+        hideTimer = window.setTimeout(() => setShowIconHint(false), 6000);
+      } else if (!entry.isIntersecting) {
+        wasVisible = false;
+      }
+    }, { threshold: 0.9 });
+
+    observer.observe(control);
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(hideTimer);
+    };
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -80,6 +113,44 @@ export default function HeroSection({
           >
             Search
           </button>
+          <div ref={iconControlRef} className="relative shrink-0">
+            <AnimatePresence>
+              {showIconHint && (
+                <motion.span
+                  initial={{ opacity: 0, y: 8, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 5, scale: 0.95 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute bottom-full left-1/2 z-30 mb-3 w-max -translate-x-1/2 rounded-lg bg-whit px-3 py-2 text-[10px] font-medium  shadow-lg sm:text-xs text-white"
+                >
+
+                  <TextType
+                    text={["Click to stop or start the rotating icons"]}
+                    typingSpeed={35}
+                    pauseDuration={1500}
+                    showCursor
+                    cursorCharacter="_"
+                    texts={["Click to stop or strat the rotating icons", ""]}
+                    deletingSpeed={50}
+                    variableSpeedEnabled={false}
+                    variableSpeedMin={60}
+                    variableSpeedMax={120}
+                    cursorBlinkDuration={0.5}
+                  />
+                  <span aria-hidden="true" className="absolute left-1/2 top-full -translate-x-1/2 border-[5px] border-transparent border-t-white" />
+                </motion.span>
+              )}
+            </AnimatePresence>
+            <button
+              type="button"
+              onClick={onToggleIcons}
+              aria-pressed={iconsPaused}
+              aria-label={iconsPaused ? "Resume hero icon animations" : "Pause hero icon animations"}
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/70 text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ceff00] active:scale-95 sm:h-12 sm:w-12"
+            >
+              {iconsPaused ? <FiPlay aria-hidden /> : <FiPause aria-hidden />}
+            </button>
+          </div>
         </form>
       </div>
       {/*  --------- bottom contents --------- */}
@@ -137,8 +208,8 @@ export default function HeroSection({
         </div>
 
         {/*  ----------- UI/UX ----------- */}
-  
-    
+
+
 
         <div className="absolute 2xl:left-[28%] md:left-[15%] lg:left-[25%] left-[2%] 2xl:bottom-60 bottom-[43%] z-20">
           <Magnet padding={100} disabled={false} magnetStrength={10}>

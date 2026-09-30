@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './../../components/layout/Navbar';
 import Footer from './../../components/layout/Footer';
 import CreatorBanner from './components/CreatorBanner';
@@ -14,26 +14,44 @@ import PopularCourses from './components/PopularCourses';
 import DiscoverCoursesHeader from './components/DiscoverCoursesHeader';
 import LogosMarquee from './components/LogosMarquee';
 import HeroSection from './components/HeroSection';
+import HeroIcons from './components/HeroIcons';
+
+import left1 from "../../assets/icons/heroIcons/left1.png"
+import left2 from "../../assets/icons/heroIcons/left2.png"
+import left3 from "../../assets/icons/heroIcons/left3.png"
+import right1 from "../../assets/icons/heroIcons/right1.png"
+import right2 from "../../assets/icons/heroIcons/right2.png"
+import right3 from "../../assets/icons/heroIcons/right3.png"
+
+
 
 const LandingPage = () => {
+  const [iconsPaused, setIconsPaused] = useState(false);
   return (
     <div>
       <Navbar />
 
-      <HeroSection
-      
-      />
+      {/* ------------ Hero Section ----------- */}
+      <section
+        
+
+      >
+        <HeroSection iconsPaused={iconsPaused} onToggleIcons={() => setIconsPaused((paused) => !paused)} />
+          <HeroIcons
+            paused={iconsPaused}
+            spiralGreen={{ src: left1 }}
+            spiralWhite1={{ src: left2 }}
+            triangle={{ src: right2 }}
+            cylinder={{ src: right1 }}
+            ring={{ src: left3 }}
+            spiralWhite2={{ src: right3 }}
+          />
+      </section>
+
+
       <LogosMarquee />
 
-      <DiscoverCoursesHeader
-      // data={{
-      //   heading: "Discover Your Passion, Build Your Skills",
-      //   description: "...",
-      //   filters: ["Featured", "Music", "Marketing", "..."],
-      // }}
-      // visibleCount={16}          // koyta pill dekhabe shuru-e, baki "+ More"-e lukiye thakbe
-      // onChange={(filter) => console.log(filter)}
-      />
+      <DiscoverCoursesHeader />
 
       <PopularCourses />
 
