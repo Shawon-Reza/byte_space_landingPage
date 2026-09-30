@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import CourseCard from "../../../components/common/courseCard/CourseCard";
 import CourseAvatarGroup from "../../../components/common/courseCard/CourseAvatarGroup";
+import Magnet from "../../../components/ui/Magnet";
 
 const students = {
     avatars: [
@@ -21,6 +22,12 @@ export default function SignupPromoIllustration({ className = "" }) {
     return (
         <div className={`relative aspect-[.92] w-full  ${className}`} aria-label="Featured ByteSpace courses">
 
+            {/* <Magnet padding={100} disabled={false} magnetStrength={10}>
+                
+            </Magnet> */}
+            <Magnet padding={100} disabled={false} magnetStrength={10}>
+
+            </Magnet>
             <motion.div
                 initial={{ x: -32, y: 24, opacity: 0, scale: 0.90 }}
                 animate={{ x: 0, y: 0, opacity: 1, scale: 1 }}
@@ -32,7 +39,9 @@ export default function SignupPromoIllustration({ className = "" }) {
                 className="absolute left-0 top-[22%] z-10 w-[88%] shadow-lg"
             >
                 {/* <CourseCard variant="secondary" /> */}
-                <CourseCard className="max-w-none" />
+                <Magnet padding={50} disabled={false} magnetStrength={15}>
+                    <CourseCard className="max-w-none" />
+                </Magnet>
             </motion.div>
 
             <motion.div
@@ -45,7 +54,9 @@ export default function SignupPromoIllustration({ className = "" }) {
                 }}
                 className="absolute right-0 top-0 z-50 w-[78%] shadow-lg"
             >
-                <CourseCard className="max-w-none" />
+                <Magnet padding={100} disabled={false} magnetStrength={15}>
+                    <CourseCard className="max-w-none" />
+                </Magnet>
             </motion.div>
 
             <motion.div
@@ -58,13 +69,18 @@ export default function SignupPromoIllustration({ className = "" }) {
                 }}
                 className="absolute -bottom-[5%] right-0 z-30 w-[54%] rounded-2xl bg-[#CCF52B] p-2 text-neutral-950 shadow-lg sm:p-3"
             >
-                <p className="text-[11px] font-semibold">Happy Students</p>
-                <p className="mt-0.5 text-[9px]">4.5 /5.0 <span className="text-blue-700">★</span></p>
+                <Magnet padding={50} disabled={false} magnetStrength={15}>
+                    <div>
+                        <p className="text-[11px] font-semibold">Happy Students</p>
+                        <p className="mt-0.5 text-[9px]">4.5 /5.0 <span className="text-blue-700">★</span></p>
 
-                <CourseAvatarGroup
-                    avatars={students.avatars}
-                    extraCount={students.extraCount}
-                />
+                        <CourseAvatarGroup
+                            avatars={students.avatars}
+                            extraCount={students.extraCount}
+                        />
+                    </div>
+                </Magnet>
+
             </motion.div>
 
         </div>

@@ -6,12 +6,13 @@ import SearchPage from "../pages/searchPage/SearchPage";
 import CourseDetails from './../pages/courseDetails/CourseDetails';
 import SignUpPage from "../pages/signUp/SignUpPage";
 import SignInPage from "../pages/signIn/SignInPage";
+import LandingPage from './../pages/landingPage/LandingPage';
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Test />,
+    element: <LandingPage/>,
   },
   {
     path: "/courses",
@@ -31,11 +32,11 @@ export const router = createBrowserRouter([
 
 
   {
-    path: "/sign_In",
+    path: "/signIn",
     element: <SignInPage/>,
   },
   {
-    path: "/sign_up",
+    path: "/signUp",
     element: <SignUpPage />,
   },
 

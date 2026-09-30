@@ -17,7 +17,7 @@ export default function SignupForm({
   title = "Welcome to ByteSpace",
   defaultValues,
   onSubmit,
-  loginHref = "/sign_In",
+  loginHref = "/signIn",
   className = "",
 }) {
   const [values, setValues] = useState({
@@ -98,7 +98,7 @@ export default function SignupForm({
         <div className="flex justify-end pt-2 sm:pt-3">
           <button
             type="submit"
-            className="rounded-full bg-[#CCF52B] px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A3CFF]/50 active:scale-95 sm:text-base"
+            className="rounded-full bg-[#CCF52B] px-8 py-3 text-sm font-semibold text-neutral-900 transition hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A3CFF]/50 active:scale-95 sm:text-base hover:scale-105 transition-all transform duration-700 ease-in-out cursor-pointer"
           >
             Continue
           </button>

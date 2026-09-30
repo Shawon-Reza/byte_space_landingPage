@@ -9,9 +9,26 @@ import navIcon from "../../assets/icons/Vector.png"
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
+    const scrollToSection = (event, href) => {
+        if (!href.startsWith('#')) return;
+
+        event.preventDefault();
+
+        const target = document.querySelector(href);
+        if (!target) return;
+
+        target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        });
+
+        // Optional: close mobile menu if you have one
+        setMenuOpen?.(false);
+    };
+
     return (
         <nav className="relative w-full bg-[#003BE2] isolate  overflow-hidden  text-white px-6 md:px-10 lg:px-14 xl:px-21 2xl:px-21">
-           {/* ----------- bg ----------- */}
+            {/* ----------- bg ----------- */}
             <div
                 aria-hidden="true"
                 className="absolute inset-0 -z-10 opacity-[.15] [background-image:linear-gradient(to_right,#a9c1ff_1px,transparent_1px),linear-gradient(to_bottom,#a9c1ff_1px,transparent_1px)] [background-size:clamp(64px,8.35vw,83px)_clamp(64px,14.4vh,83px)]"
@@ -57,13 +74,14 @@ const Navbar = () => {
                 {/* Desktop Right Side */}
                 <div className="hidden items-center gap-5 md:flex lg:gap-7">
                     <a
-                        href="/signin"
+                        href="/signIn"
                         className="text-[15px] font-medium text-white transition-opacity hover:opacity-80"
                     >
                         Sign In
                     </a>
                     <a
-                        href="/join"
+                        href="#join_as_creator"
+                        onClick={(e) => scrollToSection(e, "#join_as_creator")}
                         className="text-[15px] font-medium text-white transition-opacity hover:opacity-80"
                     >
                         Join Us
@@ -171,8 +189,8 @@ const Navbar = () => {
                     </li>
                     <li>
                         <a
-                            href="/join"
-                            onClick={() => setIsOpen(false)}
+                            href="#join_as_creator"
+                            onClick={(e) => scrollToSection(e, "#join_as_creator")}
                             className="block py-3 text-base font-semibold text-[#c8f542]"
                         >
                             Join Us

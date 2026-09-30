@@ -6,7 +6,7 @@ export default function SignInForm({
   title = "Welcome Back",
   defaultValues,
   onSubmit,
-  signupHref = "/sign_up",
+  signupHref = "/signUp",
   className = "",
 }) {
   const [values, setValues] = useState({
@@ -61,7 +61,7 @@ export default function SignInForm({
         <div className="flex justify-end pt-1">
           <button
             type="submit"
-            className="rounded-full bg-[#CCF52B] px-6 py-2 text-sm font-medium text-neutral-900 transition hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A3CFF]/50 active:scale-95 sm:px-7 sm:py-2.5"
+            className="rounded-full bg-[#CCF52B] px-6 py-2 text-sm font-medium text-neutral-900 transition hover:brightness-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A3CFF]/50 active:scale-95 sm:px-7 sm:py-2.5 cursor-pointer hover:scale-105 transition-all transform duration-700 ease-in-out"
           >
             Sign In
           </button>
@@ -78,14 +78,16 @@ export default function SignInForm({
         <button
           type="button"
           aria-label="Continue with Facebook"
-          className="flex h-12 w-12 items-center justify-center rounded-2xl border border-neutral-300 text-2xl text-black transition hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A3CFF]/50"
+          className="flex cursor-pointer h-12 w-12 items-center justify-center rounded-2xl border border-neutral-300 text-2xl text-black transition hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A3CFF]/50 hover:scale-105 transition-all transform duration-700 ease-in-out"
         >
           <FaFacebook aria-hidden />
         </button>
         <button
           type="button"
           aria-label="Continue with Google"
-          className="flex h-12 w-12 items-center justify-center rounded-2xl border border-neutral-300 text-2xl text-black transition hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A3CFF]/50"
+          className="flex cursor-pointer h-12 w-12 items-center justify-center rounded-2xl border border-neutral-300 text-2xl text-black hover:bg-neutral-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A3CFF]/50
+          hover:scale-105 transition-all transform duration-700 ease-in-out
+          "
         >
           <FaGoogle aria-hidden />
         </button>
@@ -93,7 +95,7 @@ export default function SignInForm({
 
       <p className="mt-10 text-center text-xs text-neutral-400 sm:mt-12 sm:text-sm">
         New user?{" "}
-        <a href={signupHref} className="font-medium text-[#0A3CFF] hover:underline">
+        <a href={signupHref} className="font-medium text-[#0A3CFF] hover:underline hover:scale-105 transition-all transform duration-700 ease-in-out">
           Create an account
         </a>
       </p>
