@@ -22,6 +22,8 @@ import left3 from "../../assets/icons/heroIcons/left3.png"
 import right1 from "../../assets/icons/heroIcons/right1.png"
 import right2 from "../../assets/icons/heroIcons/right2.png"
 import right3 from "../../assets/icons/heroIcons/right3.png"
+import GlowCursor from '../../components/ui/SwarmCursor';
+import SwarmCursor from '../../components/ui/SwarmCursor';
 
 
 
@@ -33,19 +35,19 @@ const LandingPage = () => {
 
       {/* ------------ Hero Section ----------- */}
       <section
-        
+
 
       >
         <HeroSection iconsPaused={iconsPaused} onToggleIcons={() => setIconsPaused((paused) => !paused)} />
-          <HeroIcons
-            paused={iconsPaused}
-            spiralGreen={{ src: left1 }}
-            spiralWhite1={{ src: left2 }}
-            triangle={{ src: right2 }}
-            cylinder={{ src: right1 }}
-            ring={{ src: left3 }}
-            spiralWhite2={{ src: right3 }}
-          />
+        <HeroIcons
+          paused={iconsPaused}
+          spiralGreen={{ src: left1 }}
+          spiralWhite1={{ src: left2 }}
+          triangle={{ src: right2 }}
+          cylinder={{ src: right1 }}
+          ring={{ src: left3 }}
+          spiralWhite2={{ src: right3 }}
+        />
       </section>
 
 
@@ -74,8 +76,27 @@ const LandingPage = () => {
         <img src={leftBottom} alt="bg" className='absolute left-0 bottom-0' />
         <img src={rightBottom} alt="" className='absolute right-0 bottom-0' />
         <img src={rightTop} alt="" className='absolute right-0 top-0' />
-        <ProfessionalGrowth />
-        <ManageCoursesSection />
+
+        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+          <SwarmCursor
+            color="#ffffff"
+            accentColor="#ffffff"
+            count={8}
+            size={3}
+            speed={2}
+            spread={100}
+            wander={0.25}
+            trail={0.75}
+            scatterOnClick
+          >
+            {/* Your content here */}
+            <ProfessionalGrowth />
+            <ManageCoursesSection />
+          </SwarmCursor>
+
+        </div>
+
+
       </div>
 
       <div id='join_as_creator'>

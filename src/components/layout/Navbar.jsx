@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router';
 // import footerImg from "../../assets/"
 import navIcon from "../../assets/icons/Vector.png"
+import TechText from '../ui/TechText';
 
 
 // Common px
@@ -8,6 +10,19 @@ import navIcon from "../../assets/icons/Vector.png"
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const { pathname } = useLocation();
+    const activeTab = pathname === '/' ? 'home'
+        : pathname.startsWith('/courses') ? 'courses'
+            : pathname.startsWith('/creators') ? 'creators' : null;
+
+    const desktopLinkClass = (tab) => `text-[15px] text-white transition-opacity hover:opacity-80 ${activeTab === tab ? 'font-bold opacity-100' : 'font-medium opacity-70'}`;
+    const mobileLinkClass = (tab) => `block py-3 text-base transition-colors ${activeTab === tab ? 'font-bold text-white' : 'font-medium text-white'}`;
+
+    const handleActiveNavClick = (tab) => {
+        if (activeTab === tab) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    };
 
     const scrollToSection = (event, href) => {
         if (!href.startsWith('#')) return;
@@ -27,7 +42,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="relative w-full bg-[#003BE2] isolate  overflow-hidden  text-white px-6 md:px-10 lg:px-14 xl:px-21 2xl:px-21">
+        <nav className=" sticky top-0 inset-0 w-full bg-[#003BE2] isolate  overflow-hidden  text-white px-6 md:px-10 lg:px-14 xl:px-21 2xl:px-21 z-50 ">
             {/* ----------- bg ----------- */}
             <div
                 aria-hidden="true"
@@ -38,36 +53,51 @@ const Navbar = () => {
                 {/* Logo */}
                 <a href="/" className="flex shrink-0 items-center gap-2">
                     <img src={navIcon} alt="icon" />
-                    <span className="text-xl font-bold tracking-tight text-white">
-                        ByteSpace
+                    <span className="text-2xl  text-white font-clash">
+                        <div style={{ width: '100%', height: '80px', position: 'relative' }}>
+                            <TechText
+                                text="React Bits"
+                                fontWeight={600}
+                                fontSize={150}
+                                reveal="letter"
+                                dashLength={4}
+                                dashGap={2}
+                                specks={15}
+                                fontFamily=""
+                                color="#ffffff"
+                                accentColor="#ffffff"
+                                letterSpacing={-0.05}
+                                reach={200}
+                                softness={0.7}
+                                strokeWidth={1.5}
+                                speed={1}
+                                lineStyle="dashed"
+                                selection
+                                labels
+                                draggable
+                                sweep
+                            />
+                        </div>
+                        {/* ByteSpace */}
                     </span>
                 </a>
 
                 {/* Desktop Navigation Links */}
-                <ul className="hidden items-center gap-9 md:flex lg:gap-12 opacity-70">
+                <ul className="hidden items-center gap-9 md:flex lg:gap-12">
                     <li>
-                        <a
-                            href="/"
-                            className="text-[15px] font-medium text-white transition-opacity hover:opacity-80"
-                        >
+                        <Link to="/" onClick={() => handleActiveNavClick('home')} aria-current={activeTab === 'home' ? 'page' : undefined} className={desktopLinkClass('home')}>
                             Home
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a
-                            href="/courses"
-                            className="text-[15px] font-medium  text-white transition-opacity hover:opacity-80"
-                        >
+                        <Link to="/courses" onClick={() => handleActiveNavClick('courses')} aria-current={activeTab === 'courses' ? 'page' : undefined} className={desktopLinkClass('courses')}>
                             Courses
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a
-                            href="/creators"
-                            className="text-[15px] font-medium text-white transition-opacity hover:opacity-80"
-                        >
+                        <Link to="/creators" onClick={() => handleActiveNavClick('creators')} aria-current={activeTab === 'creators' ? 'page' : undefined} className={desktopLinkClass('creators')}>
                             Creators
-                        </a>
+                        </Link>
                     </li>
                 </ul>
 
@@ -149,31 +179,43 @@ const Navbar = () => {
             >
                 <ul className="space-y-1 px-6 pb-6 pt-2">
                     <li>
-                        <a
-                            href="/"
-                            onClick={() => setIsOpen(false)}
-                            className="block py-3 text-base font-medium text-white"
+                        <Link
+                            to="/"
+                            onClick={() => {
+                                setIsOpen(false);
+                                handleActiveNavClick('home');
+                            }}
+                            aria-current={activeTab === 'home' ? 'page' : undefined}
+                            className={mobileLinkClass('home')}
                         >
                             Home
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a
-                            href="/courses"
-                            onClick={() => setIsOpen(false)}
-                            className="block py-3 text-base font-medium text-white"
+                        <Link
+                            to="/courses"
+                            onClick={() => {
+                                setIsOpen(false);
+                                handleActiveNavClick('courses');
+                            }}
+                            aria-current={activeTab === 'courses' ? 'page' : undefined}
+                            className={mobileLinkClass('courses')}
                         >
                             Courses
-                        </a>
+                        </Link>
                     </li>
                     <li>
-                        <a
-                            href="/creators"
-                            onClick={() => setIsOpen(false)}
-                            className="block py-3 text-base font-medium text-white"
+                        <Link
+                            to="/creators"
+                            onClick={() => {
+                                setIsOpen(false);
+                                handleActiveNavClick('creators');
+                            }}
+                            aria-current={activeTab === 'creators' ? 'page' : undefined}
+                            className={mobileLinkClass('creators')}
                         >
                             Creators
-                        </a>
+                        </Link>
                     </li>
 
                     <li className="my-3 h-px bg-white/15" />

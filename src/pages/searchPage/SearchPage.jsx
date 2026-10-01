@@ -50,7 +50,6 @@ const SearchPage = () => {
         setFilters(value);
         setPage(1);
     };
-
     return (
         <div>
             <Navbar />

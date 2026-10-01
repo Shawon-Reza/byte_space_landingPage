@@ -14,7 +14,7 @@ export default function ManageCoursesRight({
   className = "",
 }) {
   return (
-    <div className={`w-full max-w-lg ${className}`}>
+    <div className={`w-full max-w-lg ${className} z-50`}>
       <h2 className="text-3xl font-bold leading-tight tracking-tight text-neutral-950 sm:text-4xl">
         {heading}
       </h2>

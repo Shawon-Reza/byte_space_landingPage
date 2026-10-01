@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { FiPause, FiPlay, FiSearch, FiStar } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import heroBoy from "../../../assets/images/heroBoy.png";
 import rainbow from "../../../assets/images/heroRainbowBG.png"
 import CountUpModule from "react-countup";
@@ -76,11 +77,11 @@ export default function HeroSection({
     <section
       className={`relative isolate flex h-[calc(100vh-65px)] w-full flex-col items-center overflow-hidden bg-[#063be5] px-4 pb-0 pt-10 text-center text-white sm:px-8 sm:pt-12 lg:min-h-0 lg:px-10 lg:pt-8 ${className}`}
     >
-      {/*  ----------- bg --------- */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[.14] [background-image:linear-gradient(to_right,#a9c1ff_1px,transparent_1px),linear-gradient(to_bottom,#a9c1ff_1px,transparent_1px)] [background-size:clamp(56px,8.35vw,86px)_clamp(56px,13.25vh,86px)]"
-      />
+       {/* ----------- bg ----------- */}
+            <div
+                aria-hidden="true"
+                className="absolute inset-0 -z-10 opacity-[.15] [background-image:linear-gradient(to_right,#a9c1ff_1px,transparent_1px),linear-gradient(to_bottom,#a9c1ff_1px,transparent_1px)] [background-size:clamp(64px,8.35vw,83px)_clamp(64px,14.4vh,83px)]"
+            />
 
       {/* ----------- Main Contents ---------- */}
       <div className="z-20 mx-auto w-full max-w-5xl">
@@ -170,7 +171,7 @@ export default function HeroSection({
         {/* ---------- Happy Student ----------- */}
         <div className="absolute bottom-15 left-[10%] z-20 lg:left-[25%] 2xl:left-[30%]">
           <Magnet padding={100} disabled={false} magnetStrength={10}>
-            <div className="rounded-xl bg-white px-3 py-2.5 text-left text-neutral-900 shadow-lg sm:rounded-2xl sm:px-4 sm:py-3">
+            <div className="rounded-xl bg-white px-3 py-2.5 text-left text-neutral-900 shadow-lg sm:rounded-2xl sm:px-4 sm:py-3  scale-120">
               <p className="text-[11px] font-semibold sm:text-xs">{studentsCard.label}</p>
               <div className="mt-0.5 flex items-center gap-1 text-[9px] text-neutral-600 sm:text-[10px]">
                 <span>{studentsCard.rating}</span>
@@ -192,16 +193,42 @@ export default function HeroSection({
         </div>
 
         {/*----------- Percentage ----------- */}
-        <div className="absolute bottom-[30%] right-[15%] z-20 min-w-[100px] w-[12%] rounded-xl lg:right-[30%] md:right-[25%] md:min-w-[150px] 2xl:right-[30%] 2xl:bottom-50 ">
+        <div className="absolute bottom-[30%] right-[15%] z-20 min-w-[100px] w-[15%] rounded-xl lg:right-[30%] md:right-[25%] md:min-w-[150px] 2xl:right-[30%] 2xl:bottom-50 xl:scale-130 ">
           <Magnet padding={100} disabled={false} magnetStrength={10}>
-            <div className="rounded-xl bg-white px-3 py-2.5 text-left text-neutral-900 sm:rounded-2xl sm:px-4 sm:py-3">
+            <div className="rounded-xl bg-white px-3 py-2.5 text-left text-neutral-900 sm:rounded-2xl sm:px-4 sm:py-3 md:w-[150px]">
               <p className="text-[9px] text-neutral-600 sm:text-[10px]">{progressCard.label}</p>
               <p className="mt-1 text-2xl font-bold leading-none sm:text-3xl">
                 <CountUp end={percent} enableScrollSpy scrollSpyOnce={false} />
                 %
               </p>
-              <div className="mt-2 h-2 overflow-hidden rounded-full bg-neutral-100">
-                <div className="h-full rounded-full bg-[#ceff00] font-extrabold" style={{ width: `${percent}%` }} />
+              <div
+                className="mt-2 h-2 overflow-hidden rounded-full bg-neutral-100"
+                role="progressbar"
+                aria-label={progressCard.label}
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-valuenow={percent}
+              >
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    data={[{ label: progressCard.label, progress: percent }]}
+                    layout="vertical"
+                    margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+                    barSize={8}
+                  >
+                    <XAxis type="number" domain={[0, 100]} hide />
+                    <YAxis type="category" dataKey="label" hide />
+                    <Bar
+                      dataKey="progress"
+                      stackId="progress"
+                      fill="#ceff00"
+                      radius={4}
+                      isAnimationActive
+                      animationDuration={1200}
+                      animationEasing="ease-out"
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
               </div>
             </div>
           </Magnet>
@@ -213,7 +240,7 @@ export default function HeroSection({
 
         <div className="absolute 2xl:left-[28%] md:left-[15%] lg:left-[25%] left-[2%] 2xl:bottom-60 bottom-[43%] z-20">
           <Magnet padding={100} disabled={false} magnetStrength={10}>
-            <div className="rounded-xl bg-white px-3 py-2.5 text-left text-neutral-900 shadow-lg sm:rounded-2xl sm:px-4 sm:py-3">
+            <div className="rounded-xl bg-white px-3 py-2.5 text-left text-neutral-900 shadow-lg sm:rounded-2xl sm:px-4 sm:py-3 md:scale-120">
               <p className="text-[11px] font-semibold sm:text-xs">{designCard.title}</p>
               <p className="mt-0.5 text-[9px] text-neutral-500 sm:text-[10px]">{designCard.subtitle}</p>
             </div>

@@ -37,7 +37,7 @@ export function Footer() {
           <div>
             <a href="#" className="inline-flex items-center gap-2" aria-label="ByteSpace home">
               <img src={footerImg} alt="logo" />
-              <span className="text-[18px] font-extrabold">ByteSpace</span>
+              <span className="text-[18px] font-clash">ByteSpace</span>
             </a>
             <p className="mt-4 max-w-[370px] text-[10px] leading-[1.55] text-[#444] sm:text-sm">
               Stay Up to date with our latest features and releases by joining our newsletter.
@@ -52,7 +52,7 @@ export function Footer() {
                 onChange={(event) => { setEmail(event.target.value); setSubmitted(false) }}
                 placeholder="Enter your email"
                 required
-                className="h-[39px] min-w-0 flex-1 rounded-full border border-[#d9d9d9] px-[17px] text-[11px] md:text-sm outline-none transition placeholder:text-[#555] focus:border-[#a9d900] focus:ring-2 focus:ring-[#c8ff00]/30"
+                className="h-[39px] min-w-0 flex-1 rounded-full border border-[#d9d9d9] px-[17px] text-[11px] md:text-sm outline-none transition placeholder:text-[#555] focus:border-[#a9d900] focus:ring-2 focus:ring-[#c8ff00]/30 py-3"
               />
               <button type="submit" className="group inline-flex h-[35px] shrink-0 items-center justify-center gap-2 rounded-full bg-[#c8ff00] px-[18px] text-[12px] font-medium transition hover:bg-[#b6ed00] focus:outline-none focus:ring-2 focus:ring-[#9bbd00] focus:ring-offset-2">
                 {submitted ? <><FiCheck aria-hidden="true" /> Subscribed</> : <>Search <FiArrowRight aria-hidden="true" className="hidden transition-transform group-hover:translate-x-0.5" /></>}

@@ -76,7 +76,8 @@ export default function TestimonialsSection({ data, className = "" }) {
         {/* Testimonial cards */}
         <div className="mt-8 grid grid-cols-1 gap-5 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {testimonials.map((t, i) => (
-            <TestimonialCard key={i} {...t} />
+           
+              <TestimonialCard {...t} />
           ))}
         </div>
       </div>
@@ -86,11 +87,11 @@ export default function TestimonialsSection({ data, className = "" }) {
 
 function TestimonialCard({ name, role, quote, avatar }) {
   return (
-    <article className="rounded-2xl bg-white p-5 shadow-sm sm:p-6">
+    <article className="rounded-2xl bg-white p-5 shadow-2xl hover:scale-102 transition-all transform duration-700 ease-in-out ">
       <img
         src={avatar}
         alt={name}
-        className="h-12 w-12 rounded-full object-cover sm:h-14 sm:w-14"
+        className="h-12 w-12 rounded-full object-cover sm:h-14 sm:w-14 hover:scale-102 transition-all transform duration-700 ease-in-out"
       />
 
       <h3 className="mt-4 text-base font-semibold text-neutral-950 sm:text-lg">

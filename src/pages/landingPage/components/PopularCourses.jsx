@@ -12,7 +12,7 @@ const PopularCourses = () => {
                 <CourseCard
                     key={course.id}
                     course={course}
-                    className="mx-auto cursor-pointer shadow-sm"
+                    className="mx-auto cursor-pointer shadow-sm hover:scale-102 transition-all transform duration-700 ease-in-out"
                     onClick={() => navigate(`/courses/${course.id}`)}
                 />
             ))}

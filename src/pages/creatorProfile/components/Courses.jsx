@@ -11,7 +11,7 @@ export default function Courses({ courses: courseList = courses } = {}) {
         <CourseCard
           key={i}
           course={course}
-          className="mx-auto shadow-sm cursor-pointer"
+          className="mx-auto shadow-sm cursor-pointer hover:scale-102 transition-all transform duration-700 ease-in-out"
           onClick={() => {
             navigate(`/courses/${course.id}`);
             console.log("course.id:", course.id);

@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { FaStar } from "react-icons/fa";
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
 /**
  * Shape of the `data` prop (every field optional, missing ones use defaults):
@@ -124,11 +125,33 @@ export default function CourseDetailsReviews({ data, className = "" }) {
         <ul className="flex-1 space-y-1.5 sm:space-y-2">
           {summary.breakdown.map((row) => (
             <li key={row.stars} className="flex items-center gap-2 sm:gap-3">
-              <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-neutral-200">
-                <div
-                  className="h-full rounded-full bg-[#CCF52B]"
-                  style={{ width: `${(row.count / maxCount) * 100}%` }}
-                />
+              <div
+                className="h-1.5 flex-1 overflow-hidden rounded-full bg-neutral-200"
+                role="progressbar"
+                aria-label={`${row.stars} star reviews`}
+                aria-valuemin={0}
+                aria-valuemax={maxCount}
+                aria-valuenow={row.count}
+              >
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    data={[{ label: `${row.stars} stars`, progress: (row.count / maxCount) * 100 }]}
+                    layout="vertical"
+                    margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+                    barSize={6}
+                  >
+                    <XAxis type="number" domain={[0, 100]} hide />
+                    <YAxis type="category" dataKey="label" hide />
+                    <Bar
+                      dataKey="progress"
+                      fill="#CCF52B"
+                      radius={3}
+                      isAnimationActive
+                      animationDuration={1000}
+                      animationEasing="ease-out"
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
               </div>
               <Stars rating={row.stars} size="text-[10px] sm:text-xs" />
               <span className="w-8 shrink-0 text-right text-xs text-neutral-500 sm:text-sm">

@@ -2,30 +2,43 @@
 
 /* ====================== Custom Font ====================== */
 @font-face {
-    font-family: "Satoshi";
-    src: url("./assets/fonts/Satoshi-Regular.otf") format("opentype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Satoshi";
+  src: url("./assets/fonts/Satoshi-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
+
 @font-face {
-    font-family: "Poppins";
-    src: url("./assets/fonts/Poppins-Regular.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Clash";
+  src: url("./assets/fonts/ClashDisplay-Bold.otf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 :root {
-    --font-heading: "Poppins", sans-serif;
-    --font-body: "Satoshi", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Satoshi", sans-serif;
+  --font-title: "Clash", sans-serif;
 }
 
-
+.font-clash {
+  font-family: var(--font-title);
+}
 
 body {
-    font-family: var(--font-body);
+  font-family: var(--font-body);
 }
+
 
 h1,
 h2,
@@ -34,7 +47,7 @@ h4,
 h5,
 h6,
 button {
-    font-family: var(--font-heading);
+  font-family: var(--font-heading);
 }
 
 /* ---------- Lenis ----------- */

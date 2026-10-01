@@ -59,12 +59,12 @@ export default function CategoriesSection({
                 key={category.label ?? i}
                 type="button"
                 onClick={() => onCategoryClick?.(category, i)}
-                className="flex flex-col items-center gap-3 rounded-2xl border border-neutral-200 px-4 py-6 transition hover:border-neutral-300 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A3CFF]/50 sm:gap-4 sm:py-7"
+                className="flex flex-col items-center gap-3 rounded-2xl border border-neutral-200 px-4 py-6 transition hover:border-neutral-300 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A3CFF]/50 sm:gap-4 sm:py-7  cursor-pointer hover:scale-102 transition-all transform duration-700 ease-in-out"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#CCF52B] text-lg text-neutral-900 sm:h-14 sm:w-14 sm:text-xl">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#CCF52B] text-lg text-neutral-900 sm:h-14 sm:w-14 sm:text-xl hover:scale-102 transition-all transform duration-500 ease-in-out">
                   <Icon aria-hidden />
                 </span>
-                <span className="text-sm font-medium text-neutral-900 sm:text-base">
+                <span className="text-sm font-medium text-neutral-900 sm:text-base hover:scale-102 transition-all transform duration-500 ease-in-out">
                   {category.label}
                 </span>
               </button>

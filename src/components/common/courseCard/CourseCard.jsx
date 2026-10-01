@@ -79,7 +79,7 @@ export default function CourseCard({ course, className = "", onClick }) {
           src={image.src}
           alt={image.alt}
           loading="lazy"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover "
         />
         <ul className="absolute inset-x-1.5 bottom-1.5 flex flex-wrap gap-1 text-[8px] text-neutral-800">
           <Pill>{stats.lessons} Lessons</Pill>
@@ -91,7 +91,7 @@ export default function CourseCard({ course, className = "", onClick }) {
       {/* Title + rating */}
       <div className="mt-3 flex items-start justify-between gap-1.5 px-0.5">
         <div className="min-w-0">
-          <h3 className="truncate text-[15px] font-semibold leading-tight text-neutral-950">
+          <h3 className="truncate text-[15px] font-semibold leading-tight text-neutral-950 ">
             {title}
           </h3>
           <p className="mt-1 truncate text-[11px] text-neutral-500">

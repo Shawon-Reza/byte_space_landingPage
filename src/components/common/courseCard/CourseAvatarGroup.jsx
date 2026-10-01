@@ -39,10 +39,10 @@ export default function CourseAvatarGroup({
 
   // Same size on every avatar. Do NOT use size="lg" here, it would fight
   // with the responsive size classes below.
-  const sizeClass = "size-8";
+  const sizeClass = "size-8 hover:scale-109 transition-all transform duration-700 ease-in-out";
 
   return (
-    <AvatarGroup className={`${grayscale ? "grayscale" : ""} ${className}`}>
+    <AvatarGroup className={`${grayscale ? "grayscale" : ""} ${className} `}>
       {list.map((a, i) => (
         <Avatar key={a.src ?? i} className={sizeClass}>
           <AvatarImage src={a.src} alt={a.alt ?? ""} />

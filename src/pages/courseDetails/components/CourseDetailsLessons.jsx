@@ -1,5 +1,8 @@
 import { FiVideo } from "react-icons/fi";
+import CountUpModule from "react-countup";
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
+const CountUp = CountUpModule?.default ?? CountUpModule;
 
 export const DEFAULT_LESSONS_DATA = {
   intro: {
@@ -143,7 +146,7 @@ export default function CourseDetailsLessons({
             Learning Progress
           </p>
           <p className="mt-1 text-2xl font-semibold text-neutral-950 sm:text-3xl">
-            {percent}%
+            <CountUp end={percent} suffix="%" enableScrollSpy scrollSpyOnce={false} />
           </p>
           <div
             role="progressbar"
@@ -153,10 +156,25 @@ export default function CourseDetailsLessons({
             aria-label="Learning progress"
             className="mt-3 h-2 w-full overflow-hidden rounded-full bg-neutral-200"
           >
-            <div
-              className="h-full rounded-full bg-[#CCF52B] transition-[width]"
-              style={{ width: `${percent}%` }}
-            />
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                data={[{ label: "Learning progress", progress: percent }]}
+                layout="vertical"
+                margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+                barSize={8}
+              >
+                <XAxis type="number" domain={[0, 100]} hide />
+                <YAxis type="category" dataKey="label" hide />
+                <Bar
+                  dataKey="progress"
+                  fill="#CCF52B"
+                  radius={4}
+                  isAnimationActive
+                  animationDuration={1200}
+                  animationEasing="ease-out"
+                />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
         </div>
       </section>
